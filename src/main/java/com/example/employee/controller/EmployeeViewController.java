@@ -23,7 +23,7 @@ public class EmployeeViewController {
 
     @GetMapping("/employees")
     public String listEmployees(Model model) {
-        logger.info("Received request to list all employees (UI)");
+        logger.info("Received request to list all employees");
         List<Employee> employees = service.getAllEmployees();
         logger.info("Returning {} employees to UI", employees.size());
         model.addAttribute("employees", employees);
