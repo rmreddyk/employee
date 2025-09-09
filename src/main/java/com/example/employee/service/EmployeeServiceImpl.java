@@ -45,6 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee updateEmployee(Long id, Employee employee) {
         logger.info("Updating employee with ID: {}. Payload: {}", id, employee);
         Employee existing = getEmployeeById(id);
+        logger.info("Existing employee before update: {}", existing);
         existing.setFirstName(employee.getFirstName());
         existing.setLastName(employee.getLastName());
         existing.setEmail(employee.getEmail());
@@ -84,8 +85,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> searchEmployees(String query) {
         logger.info("Searching employees with query: {}", query);
         if (query == null || query.trim().isEmpty()) {
+            logger.info("Query is empty, returning all employees");
             return repository.findAll();
         }
-        return repository.searchByNameOrEmail(query);
+        List<Employee> results = repository.searchByNameOrEmail(query);
+        logger.info("Found {} employees matching query: {}", results.size(), query);
+        return results;
     }
 }

@@ -4,10 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
+
+    private static final Logger logger = LoggerFactory.getLogger(Employee.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,14 +52,15 @@ public class Employee {
     }
 
     public void setId(Long id) {
+        logger.debug("Setting employee ID: {}", id);
         this.id = id;
     }
-
     public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
+        logger.debug("Setting employee firstName: {}", firstName);
         this.firstName = firstName;
     }
 
@@ -64,6 +69,7 @@ public class Employee {
     }
 
     public void setLastName(String lastName) {
+        logger.debug("Setting employee lastName: {}", lastName);
         this.lastName = lastName;
     }
 
@@ -72,6 +78,7 @@ public class Employee {
     }
 
     public void setEmail(String email) {
+        logger.debug("Setting employee email: {}", email);
         this.email = email;
     }
 
@@ -80,6 +87,7 @@ public class Employee {
     }
 
     public void setDepartment(String department) {
+        logger.debug("Setting employee department: {}", department);
         this.department = department;
     }
 
@@ -88,6 +96,7 @@ public class Employee {
     }
 
     public void setAddress(String address) {
+        logger.debug("Setting employee address: {}", address);
         this.address = address;
     }
 
@@ -96,6 +105,7 @@ public class Employee {
     }
 
     public void setDob(LocalDate dob) {
+        logger.debug("Setting employee dob: {}", dob);
         this.dob = dob;
     }
 
@@ -104,6 +114,7 @@ public class Employee {
     }
 
     public void setDoj(LocalDate doj) {
+        logger.debug("Setting employee doj: {}", doj);
         this.doj = doj;
     }
 
@@ -112,6 +123,7 @@ public class Employee {
     }
 
     public void setDesignation(String designation) {
+        logger.debug("Setting employee designation: {}", designation);
         this.designation = designation;
     }
 
