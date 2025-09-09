@@ -25,7 +25,7 @@ public class EmployeeViewController {
     public String listEmployees(Model model) {
         logger.info("Received request to list all employees (UI)  ");
         List<Employee> employees = service.getAllEmployees();
-        logger.info("Returning {} employees to UI Page", employees.size());
+        logger.info("Returning {} emp to UI Page", employees.size());
         model.addAttribute("employees", employees);
         return "employees";
     }
