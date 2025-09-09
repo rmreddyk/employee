@@ -32,7 +32,7 @@ public class EmployeeViewController {
 
     @GetMapping("/employees/{id}")
     public String viewEmployee(@PathVariable Long id, Model model) {
-        logger.info("Received request to view employee with ID: {} (UI)", id);
+        logger.info("Received request to view employee with ID: {} ", id);
         Employee employee = service.getEmployeeById(id);
         logger.info("Returning employee to UI: {}", employee);
         model.addAttribute("employee", employee);
