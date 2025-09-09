@@ -1,0 +1,66 @@
+Prompt:
+"Generate a complete runnable web application as a downloadable project with the following requirements:
+
+Tech Stack:
+
+Java 17+
+
+Spring Boot (latest stable version)
+
+Spring Data JPA
+
+Oracle Database (as backend DB)
+
+Maven for build
+
+Thymeleaf for server-side rendering
+
+Bootstrap 5 for UI
+
+Features & Pages:
+
+Navigation Menu (Bootstrap navbar) with: Dashboard, Payments, Reports
+
+Default Page: Dashboard (simple welcome page with summary text)
+
+Payments Page:
+
+Fetch and display a list of payments from the Oracle database
+
+Use REST API /api/payments to retrieve data in JSON
+
+Display results in a responsive Bootstrap table (columns: ID, Payer Name, Amount, Payment Date)
+
+Reports Page: Placeholder page with “Reports coming soon”
+
+Database:
+
+Provide schema.sql for Oracle DB with table payments (id, payer_name, amount, payment_date)
+
+Provide data.sql with sample records
+
+Backend Requirements:
+
+Implement Payment Entity, Repository, Service, REST Controller
+
+REST API: /api/payments returns JSON list of all payments
+
+Integration: Thymeleaf + JavaScript fetch from /api/payments
+
+Configuration & Setup:
+
+application.properties with Oracle DB connection placeholders (spring.datasource.url, spring.datasource.username, spring.datasource.password)
+
+Include required Oracle JDBC dependency in pom.xml
+
+Ensure app runs with mvn spring-boot:run
+
+Deliverables:
+
+Full project structure (ready-to-run Spring Boot project)
+
+README.md with setup and run instructions
+
+schema.sql and data.sql for DB setup
+
+End-to-end working demo with all pages functional
