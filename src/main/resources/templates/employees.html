@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employees</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2>Employee List</h2>
+    <!-- Add Employee Form -->
+    <form class="row g-2 mb-4" method="post" th:action="@{/employees/add}">
+        <div class="col-md-2">
+            <input type="text" name="firstName" class="form-control" placeholder="First Name" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="lastName" class="form-control" placeholder="Last Name" required>
+        </div>
+        <div class="col-md-3">
+            <input type="email" name="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="department" class="form-control" placeholder="Department">
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-success">Add Employee</button>
+        </div>
+    </form>
+    <form class="row mb-3" method="get" th:action="@{/employees/search}">
+        <div class="col-auto">
+            <input type="text" name="query" class="form-control" placeholder="Search by name or email" th:value="${searchQuery}">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Search</button>
+            <a th:href="@{/employees}" class="btn btn-secondary">Reset</a>
+        </div>
+    </form>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:if="${employees.size()} == 0">
+            <tr>
+                <td colspan="4" class="text-center">No employees found.</td>
+            </tr>
+        </th:block>
+        <th:block th:unless="${employees.size()} == 0">
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.firstName} + ' ' + ${employee.lastName}"></td>
+                <td th:text="${employee.email}"></td>
+                <td>
+                    <a th:href="@{'/employees/' + ${employee.id}}" class="btn btn-info btn-sm">View</a>
+                    <form th:action="@{/employees/delete}" method="post" th:object="${employee}" style="display:inline">
+                        <input type="hidden" name="id" th:value="${employee.id}" />
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

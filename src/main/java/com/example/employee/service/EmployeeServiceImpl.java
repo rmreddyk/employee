@@ -79,4 +79,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         logger.info("Found {} employees in department: {}", employees.size(), department);
         return employees;
     }
+
+    @Override
+    public List<Employee> searchEmployees(String query) {
+        logger.info("Searching employees with query: {}", query);
+        if (query == null || query.trim().isEmpty()) {
+            return repository.findAll();
+        }
+        return repository.searchByNameOrEmail(query);
+    }
 }

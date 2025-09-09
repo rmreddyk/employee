@@ -11,4 +11,5 @@ public interface EmployeeService {
     void deleteEmployee(Long id);
     Employee getEmployeeByEmail(String email);
     List<Employee> getEmployeesByDepartment(String department);
+    List<Employee> searchEmployees(String query);
 }
